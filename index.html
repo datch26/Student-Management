@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Google Fonts: Syne (display) + DM Sans (body) -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+
+  <div class="bg-grid"></div>
+
+  <div class="container">
+
+    <!-- ===== HEADER ===== -->
+    <header class="header">
+      <div class="header-badge">SMS</div>
+      <div>
+        <h1 class="header-title">Student Management</h1>
+        <p class="header-sub">Add, view, and manage student records</p>
+      </div>
+    </header>
+
+    <!-- ===== FORM CARD ===== -->
+    <div class="card form-card">
+      <h2 class="card-title">
+        <span class="card-icon">＋</span> Add New Student
+      </h2>
+
+      <!-- Toast message for feedback -->
+      <div id="toast" class="toast hidden"></div>
+
+      <div class="form-grid">
+        <div class="field">
+          <label for="studentId">Student ID</label>
+          <input type="text" id="studentId" placeholder="e.g. S001" />
+        </div>
+        <div class="field">
+          <label for="studentName">Full Name</label>
+          <input type="text" id="studentName" placeholder="e.g. Arjun Sharma" />
+        </div>
+        <div class="field">
+          <label for="studentCourse">Course</label>
+          <input type="text" id="studentCourse" placeholder="e.g. Computer Science" />
+        </div>
+      </div>
+
+      <button id="addBtn" onclick="addStudent()">
+        <span>Add Student</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+          <path d="M8 1v14M1 8h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- ===== TABLE CARD ===== -->
+    <div class="card table-card">
+      <div class="table-header-row">
+        <h2 class="card-title">
+          <span class="card-icon">📋</span> Student Records
+        </h2>
+        <span class="count-badge" id="countBadge">0 students</span>
+      </div>
+
+      <!-- Loading spinner -->
+      <div id="loader" class="loader">
+        <div class="spinner"></div>
+        <span>Loading...</span>
+      </div>
+
+      <!-- Table wrapper for horizontal scroll on mobile -->
+      <div class="table-wrapper" id="tableWrapper" style="display:none">
+        <table id="studentTable">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Student ID</th>
+              <th>Name</th>
+              <th>Course</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="studentBody">
+            <!-- Rows populated by script.js -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty state -->
+      <div id="emptyState" class="empty-state" style="display:none">
+        <div class="empty-icon">🎓</div>
+        <p>No students yet. Add your first student above!</p>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
